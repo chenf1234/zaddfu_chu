@@ -138,7 +138,7 @@ $$
 
 确定好发射路径的路径延时后，进而求出相应的路径系数，然后仿照LLAP中的方法即可求出对应的相位
 
-由于$$\phi_i(t)=\phi_i+2\pi \frac{d_i(t)}{\lambda_c}$$，因此$\Delta d=\frac{(\phi_i(t)-\phi_i(0))*\lambda_c}{2\pi}$即可求出$0{\backsim} t$时间内手指距离的变化
+由于$$\phi_i(t)=\phi_i+2\pi \frac{d_i(t)}{\lambda_c}$$，因此$\Delta d=\frac{(\phi_i(t)-\phi_i(0))*\lambda_c}{2\pi}$即可求出$0\to t$时间内手指距离的变化
 
 
 
