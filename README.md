@@ -56,10 +56,8 @@ $$
 
 由于ZC序列良好的循环自相关特性，ZC序列自相关只在 t = 0 是不为 0 的， 其他点均为 0，即自相关结果为 $\delta(t)$，因此$\hat h(t)$提供了冲激函数的良好的近似。证明如下：
 
-根据相关计算等价于卷积逆序序列的共轭，假设$ZC_t(t)$的自相关为$\delta(t)$，即：
-$$
-ZC_T(t)*ZC^*_T(-t)=\delta(t)
-$$
+根据相关计算等价于卷积逆序序列的共轭，假设$ZC_t(t)$的自相关为$\delta(t)$，即：$$ZC_T(t)*ZC^*_T(-t)=\delta(t)$$
+
 因此，根据卷积操作满足交换律和结合律，以及任意函数与 $\delta(t)$ 卷积仍然维持不变，得：
 $$
 \begin{aligned}
@@ -136,7 +134,7 @@ $$
 
 确定好发射路径的路径延时后，进而求出相应的路径系数，然后仿照LLAP中的方法即可求出对应的相位
 
-由于$$\phi_i(t)=\phi_i+2\pi \frac{d_i(t)}{\lambda_c}$$，因此$\Delta d=\frac{(\phi_i(t)-\phi_i(0))*\lambda_c}{2\pi}$即可求出$0\backsim t$时间内手指距离的变化
+由于$$\phi_i(t)=\phi_i+2\pi \frac{d_i(t)}{\lambda_c}$$，因此$\Delta d=\frac{(\phi_i(t)-\phi_i(0))*\lambda_c}{2\pi}$即可求出$0{\backsim} t$时间内手指距离的变化
 
 
 
