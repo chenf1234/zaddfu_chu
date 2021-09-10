@@ -1,4 +1,4 @@
-function cal_dis(filename,fc)
+function dis = cal_dis(filename,fc)
     %基本参数
     N = 83;u = 41;
     L = 1328;%一个segment的长度
@@ -49,4 +49,5 @@ function cal_dis(filename,fc)
     dis_fine=outlier_remove(dis_fine,0.03);
     figure;plot(dis_coarse,"b-");ylabel("distance(m)");title("粗粒度测距结果");
     figure;plot(dis_fine,"r-");ylabel("distance(m)");title("细粒度测距结果");
+    dis = dis_fine;
 end
