@@ -41,12 +41,12 @@ function dis = cal_dis(filename,fc)
         lastphase = curphase;
         
     end
-    dis_coarse=outlier_remove(dis_coarse,0.03);
+    dis_coarse=outlier_remove(dis_coarse,0.02);
     
     for i = [1:length(phase)]
         dis_fine=[dis_fine,(phase(i)-phase(1))*c/(2*pi*fc)];
     end
-    dis_fine=outlier_remove(dis_fine,0.03);
+    dis_fine=outlier_remove(dis_fine,0.02);
     figure;plot(dis_coarse,"b-");ylabel("distance(m)");title("粗粒度测距结果");
     figure;plot(dis_fine,"r-");ylabel("distance(m)");title("细粒度测距结果");
     dis = dis_fine;
