@@ -14,7 +14,8 @@ function dis = cal_dis(filename,fc)
     %data=bandpass(data,[fc-B/2 fc+B/2],fs);
     data = firbandpass(fc-B/2,fc+B/2,data,fs);
     data = data(2*L+1:end);
-    
+    %是否加窗
+    isWindow = 1;
     %测距
     N = length(data);
     dis_coarse = [];%粗粒度距离
@@ -26,6 +27,7 @@ function dis = cal_dis(filename,fc)
             break
         end
         tmp=data(i:i+L-1);%用一个周期的数据运算
+        if(isWindow==1)tmp=tmp.*hanning(L)';end
         tmp=zc_demodul(tmp,fc,fs,L);%接收信号解调
         h=ifft(fft(conj(flip(tmp))).*fft(zcnew));%循环卷积
         [val,pos]= max(abs(h));
@@ -36,6 +38,7 @@ function dis = cal_dis(filename,fc)
         %细粒度测距
         Q=imag(val);
         I=real(val);
+        
         curphase = cal_phase(lastphase,Q,I);
         phase = [phase,curphase];
         lastphase = curphase;
@@ -47,7 +50,11 @@ function dis = cal_dis(filename,fc)
         dis_fine=[dis_fine,(phase(i)-phase(1))*c/(2*pi*fc)];
     end
     dis_fine=outlier_remove(dis_fine,0.02);
-    figure;plot(dis_coarse,"b-");ylabel("distance(m)");title("粗粒度测距结果");
-    figure;plot(dis_fine,"r-");ylabel("distance(m)");title("细粒度测距结果");
+    figure;plot(dis_coarse,"b-");ylabel("distance(m)");
+    if(isWindow==1)title("加窗后粗粒度测距结果");
+    else title("未加窗粗粒度测距结果");end
+    figure;plot(dis_fine,"r-");ylabel("distance(m)");
+    if(isWindow==1)title("加窗后细粒度测距结果");
+    else title("未加窗细粒度测距结果");end
     dis = dis_fine;
 end
